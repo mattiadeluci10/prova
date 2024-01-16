@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Esercizio array 2</title>
+</head>
+<body>
+    <p id="demo"></p>
+
+    <script>
+        // Crea un array per immagazzinare i numeri casuali
+        const numeriCasuali = [];
+
+        // Riempie l'array con numeri casuali da 1 a 50
+        for (let i = 0; i < 100; i++) {
+            const numeroCasuale = Math.floor(Math.random() * 50) + 1;
+            numeriCasuali.push(numeroCasuale);
+        }
+
+        // Funzione per stampare i numeri in 10 righe di 10 numeri ciascuna
+        function stampaArray(array) {
+            const demo = document.getElementById("demo");
+            demo.textContent = array.join(' ');
+        }
+
+        // Funzione per azzerare i multipli di un numero nell'array
+        function azzerareMultipli(array, numero) {
+            for (let i = 0; i < array.length; i++) {
+                if (array[i] % numero === 0) {
+                    array[i] = 0;
+                }
+            }
+        }
+
+        // Funzione principale del programma
+        function main() {
+            console.log("Array originale:");
+            console.log(numeriCasuali);
+
+            // Chiedi all'utente di inserire un numero tramite una finestra di dialogo
+            numeroInserito = parseInt(prompt("Inserisci un numero:"));
+
+            if (!isNaN(numeroInserito)) {
+                azzerareMultipli(numeriCasuali, numeroInserito);
+
+                console.log(`Array dopo l'azzeramento dei multipli di ${numeroInserito}:`);
+                console.log(numeriCasuali);
+            } else {
+                console.log("Devi inserire un numero valido.");
+            }
+
+            // Aggiorna l'output sulla pagina web
+            stampaArray(numeriCasuali);
+        }
+
+        // Avvia il programma chiamando la funzione principale
+        main();
+    </script>
+</body>
+</html>
